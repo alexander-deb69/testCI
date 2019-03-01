@@ -20,3 +20,5 @@ matrix:
           install:
               - cmake ..
               - make
+          script:
+              - ./Main
