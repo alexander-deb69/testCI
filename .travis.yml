@@ -14,7 +14,7 @@ matrix:
                   packages:
                       - cmake
           before_install:
-              - cd cmake-examples
+              - cd cmake-example
               - mkdir build
               - cd build
           install:
