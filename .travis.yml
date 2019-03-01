@@ -1,7 +1,22 @@
-language: python
-python:
-    - "3.6"
-install:
-    pip install -r requirements.txt
-script:
-    pytest tests
+matrix:
+    include:
+        - language: python
+          python:
+            - "3.6"
+          install:
+            pip install -r requirements.txt
+          script:
+            pytest tests
+        - language: cpp
+          os: linux
+          addons:
+              apt:
+                  packages:
+                      - cmake
+          before_install:
+              - cd cmake-examples
+              - mkdir build
+              - cd build
+          install:
+              - cmake ..
+              - make
