@@ -20,6 +20,7 @@ jobs:
         - stage: build_wheel
           name: "Build Wheel"
           script: python setup.py bdist_wheel
+          python: "3.6"
           deploy:
               provider: releases
               skip_cleanup: true
