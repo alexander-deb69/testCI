@@ -5,8 +5,11 @@ python:
 install:
     pip install -r requirements.txt
 jobs:
+    stages:
+        - lint
+        - test
     include:
-        - stage: "Lint check"
+        - stage: lint
           name: "Checking flake8"
           script:
               flake8
