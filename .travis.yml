@@ -2,15 +2,24 @@ language: python
 python:
     - "3.6"
     - "2.7"
-install:
-    pip install -r requirements.txt
-script:
-    python -m flake8
 jobs:
     include: 
+        - stage: lint
+          name: "Python 2.7 lint"
+          python: "2.7"
+          script: python -m flake8
+        - stage: lint
+          name: "Python 3.6 lint"
+          python: "3.6"
+          script: python -m flake8
         - stage: test
-          python:
-              - "3.6"
-              - "2.7"
-          script:
-              pytest tests
+          python: "2.7"
+          name: "Python 2.7 tests"
+          script: pytest tests
+        - stage: test
+          name: "Python 3.6 tests"
+          python: "3.6"
+          script: pytest tests
+stages:
+   - lint
+   - test
