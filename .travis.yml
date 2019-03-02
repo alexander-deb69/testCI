@@ -17,8 +17,13 @@ jobs:
           name: "Python 3.6 tests"
           python: "3.6"
           script: pytest tests
+        - stage: notif
+          name: "Notification send"
+          install: skip
+          script: skip
+          notifications:
+              slack: 'akhtyamovpavel:$SLACK_TOKEN'
 stages:
     - lint
     - test
-notifications:
-    slack: 'akhtyamovpavel:$SLACK_TOKEN'
+    - notif
