@@ -9,5 +9,8 @@ script:
 jobs:
     include: 
         - stage: test
+          python:
+              - "3.6"
+              - "2.7"
           script:
               pytest tests
