@@ -12,7 +12,7 @@ jobs:
         - stage: lint
           name: "Checking flake8"
           script:
-              flake8
+              python -m flake8
         - stage: test
           name: "Testing code"
           script:
