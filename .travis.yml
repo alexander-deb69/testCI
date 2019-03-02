@@ -26,7 +26,9 @@ jobs:
           install: skip
           script: skip
           notifications:
-              slack: 'akhtyamovpavel:$SLACK_TOKEN'
+              slack: 'akhtyamovpavel:z3d9voquUsgMhRaNCUZr8Ag9'
+notifications:
+    slack: 'akhtyamovpavel:z3d9voquUsgMhRaNCUZr8Ag9'
 stages:
     - lint
     - test
