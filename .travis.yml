@@ -5,6 +5,10 @@ jobs:
           name: "Python 2.7 lint"
           python: "2.7"
           script: python -m flake8
+          notifications:
+              slack:
+                  rooms:
+                      - akhtyamovpavel:z3d9voquUsgMhRaNCUZr8Ag9
         - stage: lint
           name: "Python 3.6 lint"
           python: "3.6"
