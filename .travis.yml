@@ -5,10 +5,6 @@ jobs:
           name: "Python 2.7 lint"
           python: "2.7"
           script: python -m flake8
-          notifications:
-              slack:
-                  rooms:
-                      - akhtyamovpavel:z3d9voquUsgMhRaNCUZr8Ag9
         - stage: lint
           name: "Python 3.6 lint"
           python: "3.6"
@@ -21,15 +17,18 @@ jobs:
           name: "Python 3.6 tests"
           python: "3.6"
           script: pytest tests
-        - stage: notif
-          name: "Notification send"
-          install: skip
-          script: skip
-          notifications:
-              slack: 'akhtyamovpavel:z3d9voquUsgMhRaNCUZr8Ag9'
-notifications:
-    slack: 'akhtyamovpavel:z3d9voquUsgMhRaNCUZr8Ag9'
+        - stage: build_wheel
+          name: "Build Wheel"
+          script: python setup.py bdist_wheel
+          deploy:
+              provider: releases
+              skip_cleanup: true
+              api_key: ${GITHUB_TOKEN}
+              file_glob: true
+              file:
+                  - "dist/*.whl"
 stages:
     - lint
     - test
-    - notif
+    - name: build_wheel
+      if: branch = master
