@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-ROOT_PACKAGE_NAME = 'kafkajudge'
-
 from setuptools import setup, find_packages
 
 ROOT_PACKAGE_NAME = 'triangle'
@@ -20,4 +18,3 @@ setup(
     long_description='triangles',
     requirements=parse_requirements()
 )
-
