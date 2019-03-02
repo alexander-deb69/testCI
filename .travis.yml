@@ -18,5 +18,7 @@ jobs:
           python: "3.6"
           script: pytest tests
 stages:
-   - lint
-   - test
+    - lint
+    - test
+notifications:
+    slack: 'akhtyamovpavel:$SLACK_TOKEN'
