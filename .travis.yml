@@ -28,6 +28,8 @@ jobs:
               file_glob: true
               file:
                   - "dist/*.whl"
+notifications:
+    slack: ${SLACK_CREDENTIALS}
 stages:
     - lint
     - test
