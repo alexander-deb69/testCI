@@ -5,13 +5,9 @@ python:
 install:
     pip install -r requirements.txt
 stages:
-    - lint
-    - test
-jobs:
-    include:
-        - stage: lint
-          script:
-              python -m flake8
-        - stage: test
-          script:
-              pytest tests
+    - name: lint
+      script:
+          python -m flake8
+    - name: test
+      script:
+          pytest tests
