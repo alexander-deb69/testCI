@@ -12,11 +12,11 @@ jobs:
         - stage: test
           python: "2.7"
           name: "Python 2.7 tests"
-          script: pytest tests
+          script: PYTHONPATH=. pytest tests
         - stage: test
           name: "Python 3.6 tests"
           python: "3.6"
-          script: pytest tests
+          script: PYTHONPATH=. pytest tests
         - stage: build_wheel
           name: "Build Wheel"
           script: python setup.py bdist_wheel
