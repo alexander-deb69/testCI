@@ -4,10 +4,10 @@ python:
     - "2.7"
 install:
     pip install -r requirements.txt
-stages:
-    - name: lint
-      script:
-          python -m flake8
-    - name: test
-      script:
-          pytest tests
+
+
+jobs:
+    include:
+        - stage: "Lint and Test"
+          script: python -m flake8
+          script: pytest tests
