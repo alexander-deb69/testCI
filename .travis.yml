@@ -1,39 +1,41 @@
 language: python
 jobs:
-    include: 
-        - stage: lint
-          name: "Python 2.7 lint"
-          python: "2.7"
-          script: python -m flake8
-        - stage: lint
-          name: "Python 3.6 lint"
-          python: "3.6"
-          script: python -m flake8
-        - stage: test
-          python: "2.7"
-          name: "Python 2.7 tests"
-          script: PYTHONPATH=. pytest tests
-        - stage: test
-          name: "Python 3.6 tests"
-          python: "3.6"
-          script: PYTHONPATH=. pytest tests
-        - stage: build_wheel
-          name: "Build Wheel"
-          script: python setup.py bdist_wheel
-          python: "3.6"
-          deploy:
-              provider: releases
-              skip_cleanup: true
-              api_key: ${GITHUB_TOKEN}
-              file_glob: true
-              file:
-                  - "dist/*.whl"
+  include:
+  - stage: lint
+    name: Python 2.7 lint
+    python: '2.7'
+    script: python -m flake8
+  - stage: lint
+    name: Python 3.6 lint
+    python: '3.6'
+    script: python -m flake8
+  - stage: test
+    python: '2.7'
+    name: Python 2.7 tests
+    script: PYTHONPATH=. pytest tests
+  - stage: test
+    name: Python 3.6 tests
+    python: '3.6'
+    script: PYTHONPATH=. pytest tests
+  - stage: build_wheel
+    name: Build Wheel
+    script: python setup.py bdist_wheel
+    python: '3.6'
+    deploy:
+      provider: releases
+      skip_cleanup: true
+      api_key: "${GITHUB_TOKEN}"
+      file_glob: true
+      file:
+      - dist/*.whl
 notifications:
-    slack:
-        on_success: always
-        on_failure: always
+  slack:
+    on_success: always
+    on_failure: always
+    rooms:
+      secure: AH5X551LeBgeparsUrdyUUaiIHN70PZ/KLV75kP3rxJVSJ4B/32I+6bxqQpQ5iKPd9P9qotwyjW0DwwCrz0YHLL/3kcvmXzUiE2xfH6C61o2j4ppYDxzG3ow5cKj0HBz0ET1akoxXCsA1ou1qS+SHab9kL0EAJ4uisrcK1MAmiIqRp0lWqyPbEzM5QDv+liBgud1vurDVi2IC8ol9JdOW5eRhR0xGMz2gTXsM6dSK8+QovltcqMGiqbwCSUK86vi1C9N6thifNMh1YFNG89ZESkfIv3Y4+3aIdDgIsed580QrQ8Xc2AY1o9FjOi+/LzV+GH4ADh2zHSbrD+nosD8UDGqpWZVXsQXh319QIiGUIlYTNvaO3il2rL/MvikfHX4IvANVTxofCxSvvnpMM+ou9Weusl6+pYfzIXB6VsKxdMXLNx4h7pBiWOiawvQNRt3eGwElW4XkPa/EcDpzok7d/z4kxXL0YYT1UsEwB+ix4nugvaJjZTpDkIgTb5H03KnZJyTvyateGKQU9Y+qgw/YajpQaMC5PZx8mHl/CATbGO3TBW7r2WXijb9oqK7PN/5ZhX+/+P0v03CtV5wWWEtp9OP0aoG3RGFEnm6WanV7VEKgNEyt5YdDBDESo6AffkOxVcbMdenxjDw1jo86AfMrIGuOd5byjcBIOfd5SLwyA8=
 stages:
-    - lint
-    - test
-    - name: build_wheel
-      if: branch = master
+- lint
+- test
+- name: build_wheel
+  if: branch = master
