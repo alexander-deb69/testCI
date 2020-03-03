@@ -30,6 +30,8 @@ jobs:
                   - "dist/*.whl"
 notifications:
     slack: ${SLACK_CREDENTIALS}
+        on_success: always
+        on_failure: always
 stages:
     - lint
     - test
