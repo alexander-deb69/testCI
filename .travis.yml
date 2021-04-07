@@ -7,7 +7,7 @@ jobs:
     script: python -m flake8
   - stage: lint
     name: Python 3.6 lint
-    python: '3.6'
+    python: '3.8'
     script: python -m flake8
   - stage: test
     python: '2.7'
@@ -15,12 +15,12 @@ jobs:
     script: PYTHONPATH=. pytest tests
   - stage: test
     name: Python 3.6 tests
-    python: '3.6'
+    python: '3.8'
     script: PYTHONPATH=. pytest tests
   - stage: build_wheel
     name: Build Wheel
     script: python setup.py bdist_wheel
-    python: '3.6'
+    python: '3.8'
     deploy:
       provider: releases
       skip_cleanup: true
