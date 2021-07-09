@@ -12,7 +12,7 @@ def parse_requirements():
 
 setup(
     name=ROOT_PACKAGE_NAME,
-    version='1.0',
+    version='1.1',
     author=['Pavel Akhtyamov'],
     packages=find_packages(),
     long_description='triangles',
