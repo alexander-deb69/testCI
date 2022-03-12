@@ -51,6 +51,6 @@ jobs:
       uses: actions/upload-artifact@v3.0.0
       if: github.ref == 'refs/heads/master'
       with:
-        name: python-package
+        name: python-package-${{ matrix.python }}-${{ matrix.os }} 
         path: dist/*.whl
         retention-days: 5
