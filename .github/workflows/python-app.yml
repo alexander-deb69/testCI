@@ -42,3 +42,14 @@ jobs:
     - name: Test with pytest
       run: |
         PYTHONPATH=. pytest tests
+        
+    - name: Build package
+      run: |
+        python setup.py bdist_wheel
+      
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3.0.0
+      with:
+        name: python-package
+        path: dist/*.whl
+        retention-days: 5
