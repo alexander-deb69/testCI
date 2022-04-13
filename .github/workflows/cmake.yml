@@ -21,4 +21,4 @@ jobs:
       run: cd cmake-example && mkdir build && cd build && cmake .. && make
       
     - name: Run exe
-      run: ./HelloWorldProject
+      run: ./Main
