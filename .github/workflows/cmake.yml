@@ -16,3 +16,9 @@ jobs:
     
     - name: Check cmake version
       run: cmake --version
+    
+    - name: Build
+      run: cd cmake-example && mkdir build && cd build && cmake .. && make
+      
+    - name: Run exe
+      run: ./HelloWorldProject
