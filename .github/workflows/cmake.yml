@@ -2,7 +2,7 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ '*' ]
+    branches: [ '**' ]
   pull_request:
     branches: [ master ]
 
@@ -16,3 +16,9 @@ jobs:
     
     - name: Check cmake version
       run: cmake --version
+  
+    - name: Build
+      run: cd cmake-example && mkdir build && cd build && cmake .. && make
+      
+    - name: Run exe
+      run: cd cmake-example/build && ls && ./Main
